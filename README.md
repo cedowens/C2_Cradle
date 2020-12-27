@@ -1,8 +1,13 @@
 # C2 Cradle
-Tool to download and macOS capable command &amp; control servers as docker containers from a list of options. This can be useful to blue teamers who want to quickly stand up commonly used cross platform C2 frameworks for building detections. This may also be helpful for red teams looking to automate C2 setup.
+The C2 Cradle is a tool to download, install, and start command &amp; control servers (that have macOS compatible C2 clients) as docker containers. The operator is presented with a list of options to choose from and the C2 Cradle will take it from there and download, install, and start the C2 server in a container. 
 
+**Why?**
+1. This can be useful to blue teamers who want to quickly stand up commonly used cross platform C2 frameworks for building detections. This will allow blue teamers to easily accomplish this without having to worry about manually installing dependencies.
 
+2. This may also be helpful for red teams looking to automate C2 setup. This can be coupled with additional automation (ex: Ansible or Terraform) for near push button C2 deployments.
 
+**Prerequisite**
+Docker must be installed and running. I have included a docker install script that works with most Linux flavors here if you need to install docker. I did most of my testing on Ubuntu and Kali host machines.
 
 **Available C2 servers:**
 
@@ -10,9 +15,13 @@ Tool to download and macOS capable command &amp; control servers as docker conta
 
 Since Mythic already has a docker image included, I simply run that image. No additional changes were made.
 
+I did not create a shared volume between the Mythic container and the host machine since Mythic includes a web server through which to interact with the container and access files on the container (ex: payloads, C2 artifacts, etc.)
+
 2. **MacC2**:
 
 Since I already included a docker image for MacC2, I simply run that image. No additional changes were made.
+
+I created a shared volume between the host and the MacC2 container located at /var/lib/docker/volumes/macc2. You can use this shared directory to access things such as the macro.txt file, MacC2_client.py, and other C2 artifacts (ex: screenshots, files downloaded, etc).
 
 3. **Deimos C2**:
 
@@ -24,6 +33,8 @@ I built my own docker image for Deimos C2. Here is how the installation and setu
 
 - The Deimos C2 server will start once done and allow you to login on port 8443 and create a Deimos login account. **Note: You will want to ensure that your Deimos C2 server listening on port 8443 is not publicly exposed**
 
+I created a shared volume between the host and the Deimos C2 container located at /var/lib/docker/volumes/deimosc2. However, since Deimos includes a web gui through which to access and manage your C2, you likely won't need the shared volume since you can generate payloads, download payloads, view host artifacts, etc all through the GUI.
+
 4. **EvilOSX C2**:
 
 I built my own docker image since I had issues with the included one. Here is how the installation and setup works:
@@ -34,30 +45,40 @@ I built my own docker image since I had issues with the included one. Here is ho
 
 - You can then clone EvilOSX on your host machine (or another host) and generate the EvilOSX payload to connect to the server by running python start.py --builder and entering your C2 IP and port information
 
+I created a shared volume between the host and the Deimos C2 container located at /var/lib/docker/volumes/evilosx. Since EvilOSX contains a GUI you likely will not need the shared volume.
+
 5. **MacShellSwift C2**:
 
 Since I already included a docker image for MacShellSwift, I simply run that image. No additional changes were made.
 
+I created a shared volume between the host and the MacShellSwift C2 container located at /var/lib/docker/volumes/MacShellSwift. Here you can access C2 artifacts (ex: screenshots, files downloaded, etc.).
 
+6. **Sliver C2**:
 
-1. During set up enter the MacC2 IP address or hostname that you want the MacC2 client to connect to. This will auto generate the client payload using that address/hostname.
+Sliver C2 does have it's own docker image, but I used my own for simplicity. Here is how the installation and setup works:
 
-2. The MacC2 server will start on port 443 once done.
+- the Sliver C2 compiled go binary is downloaded (the latest version during the time of this repo was v1.2.0 and I used the sliver-server_linux.zip file)
 
-3. cd to /var/lib/docker/volumes/macc2/_data in order to view the macro.txt file as well as the MacC2_client.py payload.
+- the binary is unzipped and added to the docker image where it is executed
 
-4. Copy the MacC2_client.py over to the target machine and execute. Or, copy the macro.txt over into a Word doc and detonate on the target host.
+- you will then be brought to the Sliver main menu to select options
 
+I created a shared volume between the host and the Sliver C2 container at /var/lib/docker/volumes/sliverc2.
 
+7. **CHAOS C2**:
 
-8. **CHAOS C2**:
+CHAOS C2 does not include a docker image so I built one. Here is how the installation and setup works:
 
-After the server is stood up as a docker container, take the following steps:
+- The CHAOS repo is cloned to the host machine
 
-1. Start a listener on the server:
+- My dockerfile is copied over to the repo and added in docker, where the go binary is built and started
+
+- After the server is stood up as a docker container, take the following steps:
+
+i. Start a listener on the server:
 > listen address=[IP of server] port=[port]
 
-2. You will need to locally (outside of the container) download CHAOS C2 and generate the payload:
+ii. You will need to locally (outside of the container) download CHAOS C2 and generate the payload:
 
 > git clone https://github.com/tiagorlampert/CHAOS && cd CHAOS/cmd/chaos && go build
 
@@ -73,4 +94,9 @@ After the server is stood up as a docker container, take the following steps:
 
 > execute the binary on the target host and the C2 server will show a C2 connection
 
-3. Docker maps the chaosc2 directory (where the server is running) to the /var/lib/docker/volumes/chaosc2/_data directory on the host. 
+iii. Docker maps the chaosc2 directory (where the server is running) to the /var/lib/docker/volumes/chaosc2/_data directory on the host. 
+
+8. **Empire C2**:
+
+Since Empire contains its own docker image, I simply use that image. No additional changes were made.
+
