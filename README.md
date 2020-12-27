@@ -12,9 +12,33 @@ Since Mythic already has a docker image included, I simply run that image. No ad
 
 2. **MacC2**:
 
-MacC2 also has its own docker image included. I made a small change to automate the self signed ssl cert steps, so this change is included here in this repo. 
+Since I already included a docker image for MacC2, I simply run that image. No additional changes were made.
 
-Steps:
+3. **Deimos C2**:
+
+I built my own docker image for Deimos C2. Here is how the installation and setup works:
+
+- Since the Deimos C2 repo recommends pulling the latest compiled binary as opposed to building from source, I follow that guidance and pull the latest compiled go binary as of the time of this repo (which is https://github.com/DeimosC2/DeimosC2/releases/download/1.1.0/DeimosC2_linux.zip)
+
+- The binary is unzipped and loaded into Docker, where the dependencies are loaded and the DeimosC2 Linux binary is executed to start the Deimos C2 server.
+
+- The Deimos C2 server will start once done and allow you to login on port 8443 and create a Deimos login account. **Note: You will want to ensure that your Deimos C2 server listening on port 8443 is not publicly exposed**
+
+4. **EvilOSX C2**:
+
+I built my own docker image since I had issues with the included one. Here is how the installation and setup works:
+
+- the EvilOSX repo is cloned and my docker image is copied into the repo
+
+- the docker image is built and executed, which will install the dependencies in docker and start the server in cli mode on port 80
+
+- You can then clone EvilOSX on your host machine (or another host) and generate the EvilOSX payload to connect to the server by running python start.py --builder and entering your C2 IP and port information
+
+5. **MacShellSwift C2**:
+
+Since I already included a docker image for MacShellSwift, I simply run that image. No additional changes were made.
+
+
 
 1. During set up enter the MacC2 IP address or hostname that you want the MacC2 client to connect to. This will auto generate the client payload using that address/hostname.
 
