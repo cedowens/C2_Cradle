@@ -6,8 +6,13 @@ The C2 Cradle is a tool to download, install, and start command &amp; control se
 
 2. This may also be helpful for red teams looking to automate C2 setup. This can be coupled with additional automation (ex: Ansible or Terraform) for near push button C2 deployments.
 
+---------------
+
 **Prerequisite**
+
 Docker must be installed and running. I have included a docker install script that works with most Linux flavors here if you need to install docker. I did most of my testing on Ubuntu and Kali host machines.
+
+---------------
 
 **Available C2 servers:**
 
