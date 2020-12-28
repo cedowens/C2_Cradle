@@ -45,7 +45,7 @@ Once the setup is done, by default the MacC2 https server will listen on 0.0.0.0
 
 ![Image](pic3.png)
 
-The IP/hsotname provided during setup will be used to configure the client (MacC2_client.py) as well as the macro generated and dropped at macro.txt. Both of those files can be accessed from inside the MacC2 container at:
+The IP/hostname provided during setup will be used to configure the client (MacC2_client.py) as well as the macro generated and dropped at macro.txt. Both of those files can be accessed from inside the MacC2 container at:
 
 > /var/lib/docker/volumes/macc2
 
