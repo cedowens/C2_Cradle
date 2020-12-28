@@ -32,14 +32,18 @@ Once the setup is done, by default Mythic will set up the Mythic admin server at
 
 ### 2. MacC2:
 
-Since I already included a docker image for MacC2, I simply run that image. No additional changes were made.
+**link: https://github.com/cedowens/MacC2**
 
-I created a shared volume between the host and the MacC2 container located at:
+Since I already included a docker image for my MacC2 project, I simply run that image. No additional changes were made.
+
+MacC2 creates shared volume between the host and the MacC2 container located at:
 > /var/lib/docker/volumes/macc2
 
 You can use this shared directory to access things such as the macro.txt file, MacC2_client.py, and other C2 artifacts (ex: screenshots, files downloaded, etc).
 
 Once the setup is done, by default the MacC2 https server will listen on 0.0.0.0 port 443. 
+
+![Image](pic3.png)
 
 The IP/hsotname provided during setup will be used to configure the client (MacC2_client.py) as well as the macro generated and dropped at macro.txt. Both of those files can be accessed from inside the MacC2 container at:
 
