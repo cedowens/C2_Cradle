@@ -20,11 +20,13 @@ Docker must be installed and running. I have included a docker install script th
 
 ### 1. Mythic C2:
 
+**link: https://github.com/its-a-feature/Mythic**
+
 Since Mythic already has a docker image included, I simply run that image. No additional changes were made.
 
 I did not create a shared volume between the Mythic container and the host machine since Mythic includes a web server through which to interact with the container and access files on the container (ex: payloads, C2 artifacts, etc.)
 
-Once the setup is done, by default Mythic will set up the Mythic admin server at https://127.0.0.1:7443. The C2 cradle script gives you the option to pause during the setup and edit the conf file if you want to change any of this before proceeding with installation and setup:
+Once the setup is done, by default Mythic will set up the Mythic admin server at https://127.0.0.1:7443. The C2 Cradle script gives you the option to pause during the setup and edit the conf file if you want to change any of this before proceeding with installation and setup:
 
 ![Image](pic2.png)
 
@@ -32,7 +34,18 @@ Once the setup is done, by default Mythic will set up the Mythic admin server at
 
 Since I already included a docker image for MacC2, I simply run that image. No additional changes were made.
 
-I created a shared volume between the host and the MacC2 container located at /var/lib/docker/volumes/macc2. You can use this shared directory to access things such as the macro.txt file, MacC2_client.py, and other C2 artifacts (ex: screenshots, files downloaded, etc).
+I created a shared volume between the host and the MacC2 container located at:
+> /var/lib/docker/volumes/macc2
+
+You can use this shared directory to access things such as the macro.txt file, MacC2_client.py, and other C2 artifacts (ex: screenshots, files downloaded, etc).
+
+Once the setup is done, by default the MacC2 https server will listen on 0.0.0.0 port 443. 
+
+The IP/hsotname provided during setup will be used to configure the client (MacC2_client.py) as well as the macro generated and dropped at macro.txt. Both of those files can be accessed from inside the MacC2 container at:
+
+> /var/lib/docker/volumes/macc2
+
+
 
 ### 3. Deimos C2:
 
