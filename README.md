@@ -30,6 +30,8 @@ Once the setup is done, by default Mythic will set up the Mythic admin server at
 
 ![Image](pic2.png)
 
+=============================================
+
 ### 2. MacC2:
 
 **link: https://github.com/cedowens/MacC2**
@@ -49,9 +51,11 @@ The IP/hostname provided during setup will be used to configure the client (MacC
 
 > /var/lib/docker/volumes/macc2
 
-
+=============================================
 
 ### 3. Deimos C2:
+
+**link: https://github.com/DeimosC2/DeimosC2**
 
 I built my own docker image for Deimos C2. Here is how the installation and setup works:
 
@@ -60,6 +64,8 @@ I built my own docker image for Deimos C2. Here is how the installation and setu
 - The binary is unzipped and loaded into Docker, where the dependencies are loaded and the DeimosC2 Linux binary is executed to start the Deimos C2 server.
 
 - The Deimos C2 server will start once done and allow you to login on port 8443 and create a Deimos login account. **Note: You will want to ensure that your Deimos C2 server listening on port 8443 is not publicly exposed**
+
+
 
 I created a shared volume between the host and the Deimos C2 container located at /var/lib/docker/volumes/deimosc2. However, since Deimos includes a web gui through which to access and manage your C2, you likely won't need the shared volume since you can generate payloads, download payloads, view host artifacts, etc all through the GUI.
 
