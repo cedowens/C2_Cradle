@@ -8,29 +8,29 @@ The C2 Cradle is a tool to download, install, and start command &amp; control se
 
 ---------------
 
-**Prerequisite**
+## Prerequisites
 
 Docker must be installed and running. I have included a docker install script that works with most Linux flavors here if you need to install docker. I did most of my testing on Ubuntu and Kali host machines.
 
 ---------------
 
-**Available C2 servers:**
+## Available C2 servers:
 
 ![Image](pic1.png)
 
-1. **Mythic C2**:
+### 1. Mythic C2:
 
 Since Mythic already has a docker image included, I simply run that image. No additional changes were made.
 
 I did not create a shared volume between the Mythic container and the host machine since Mythic includes a web server through which to interact with the container and access files on the container (ex: payloads, C2 artifacts, etc.)
 
-2. **MacC2**:
+### 2. MacC2:
 
 Since I already included a docker image for MacC2, I simply run that image. No additional changes were made.
 
 I created a shared volume between the host and the MacC2 container located at /var/lib/docker/volumes/macc2. You can use this shared directory to access things such as the macro.txt file, MacC2_client.py, and other C2 artifacts (ex: screenshots, files downloaded, etc).
 
-3. **Deimos C2**:
+### 3. Deimos C2:
 
 I built my own docker image for Deimos C2. Here is how the installation and setup works:
 
@@ -42,7 +42,7 @@ I built my own docker image for Deimos C2. Here is how the installation and setu
 
 I created a shared volume between the host and the Deimos C2 container located at /var/lib/docker/volumes/deimosc2. However, since Deimos includes a web gui through which to access and manage your C2, you likely won't need the shared volume since you can generate payloads, download payloads, view host artifacts, etc all through the GUI.
 
-4. **EvilOSX C2**:
+### 4. **EvilOSX C2:
 
 I built my own docker image since I had issues with the included one. Here is how the installation and setup works:
 
@@ -54,13 +54,13 @@ I built my own docker image since I had issues with the included one. Here is ho
 
 I created a shared volume between the host and the Deimos C2 container located at /var/lib/docker/volumes/evilosx. Since EvilOSX contains a GUI you likely will not need the shared volume.
 
-5. **MacShellSwift C2**:
+### 5. MacShellSwift C2:
 
 Since I already included a docker image for MacShellSwift, I simply run that image. No additional changes were made.
 
 I created a shared volume between the host and the MacShellSwift C2 container located at /var/lib/docker/volumes/MacShellSwift. Here you can access C2 artifacts (ex: screenshots, files downloaded, etc.).
 
-6. **Sliver C2**:
+### 6. Sliver C2:
 
 Sliver C2 does have it's own docker image, but I used my own for simplicity. Here is how the installation and setup works:
 
@@ -72,7 +72,7 @@ Sliver C2 does have it's own docker image, but I used my own for simplicity. Her
 
 I created a shared volume between the host and the Sliver C2 container at /var/lib/docker/volumes/sliverc2.
 
-7. **CHAOS C2**:
+### 7. CHAOS C2:
 
 CHAOS C2 does not include a docker image so I built one. Here is how the installation and setup works:
 
@@ -103,7 +103,7 @@ ii. You will need to locally (outside of the container) download CHAOS C2 and ge
 
 iii. Docker maps the chaosc2 directory (where the server is running) to the /var/lib/docker/volumes/chaosc2/_data directory on the host. 
 
-8. **Empire C2**:
+### 8. Empire C2:
 
 Since Empire contains its own docker image, I simply use that image. No additional changes were made.
 
