@@ -16,6 +16,8 @@ Docker must be installed and running. I have included a docker install script th
 
 **Available C2 servers:**
 
+![Image](pic1.png)
+
 1. **Mythic C2**:
 
 Since Mythic already has a docker image included, I simply run that image. No additional changes were made.
