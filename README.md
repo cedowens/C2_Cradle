@@ -24,6 +24,10 @@ Since Mythic already has a docker image included, I simply run that image. No ad
 
 I did not create a shared volume between the Mythic container and the host machine since Mythic includes a web server through which to interact with the container and access files on the container (ex: payloads, C2 artifacts, etc.)
 
+Once the setup is done, by default Mythic will set up the Mythic admin server at https://127.0.0.1:7443. The C2 cradle script gives you the option to pause during the setup and edit the conf file if you want to change any of this before proceeding with installation and setup:
+
+![Image](pic2.png)
+
 ### 2. MacC2:
 
 Since I already included a docker image for MacC2, I simply run that image. No additional changes were made.
