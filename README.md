@@ -10,7 +10,9 @@ The C2 Cradle is a tool to download, install, and start command &amp; control se
 
 ## Prerequisites
 
-Docker must be installed and running. I have included a docker install script that works with most Linux flavors here if you need to install docker. I did most of my testing on Ubuntu and Kali host machines.
+I built this primarily on Ubuntu, so I recommend running on Ubuntu.
+
+Docker must be installed and running. I have included a docker install script that works with most Linux flavors here if you need to install docker. I did most of my testing on Ubuntu and Kali host machines. Curl must also be installed (weird, but some versions of Ubuntu do not include curl so you may have to install it).
 
 ---------------
 
