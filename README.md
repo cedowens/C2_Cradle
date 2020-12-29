@@ -148,11 +148,15 @@ example:
 
 ### 7. CHAOS C2:
 
+**link: https://github.com/tiagorlampert/CHAOS**
+
 CHAOS C2 does not include a docker image so I built one. Here is how the installation and setup works:
 
 - The CHAOS repo is cloned to the host machine
 
-- My dockerfile is copied over to the repo and added in docker, where the go binary is built and started
+- My dockerfile is copied over to the repo and added in docker, where the go binary is built and started:
+
+![Image](pic9.png)
 
 - After the server is stood up as a docker container, take the following steps:
 
@@ -171,13 +175,18 @@ ii. You will need to locally (outside of the container) download CHAOS C2 and ge
 
 > generate address=[IP of C2 server] port=[C2 server port] --[platform]
 
-> binary will be dropped in the build directory with a random name
+The CHAOS binary will be dropped in the build directory with a random name. Execute the binary on the target host and the C2 server will show a C2 connection
 
-> execute the binary on the target host and the C2 server will show a C2 connection
+iii. Docker maps the chaosc2 directory (where the server is running) to the following directory on the host:
 
-iii. Docker maps the chaosc2 directory (where the server is running) to the /var/lib/docker/volumes/chaosc2/_data directory on the host. 
+> /var/lib/docker/volumes/chaosc2/_data
+
+=============================================
 
 ### 8. Empire C2:
 
-Since Empire contains its own docker image, I simply use that image. No additional changes were made.
+Since Empire contains its own docker image, I simply pull that image and run it. No additional changes were made.
 
+Once started the server also opens port 5000 (default admin API) as well as 1337 (default REST API), so you will need to restrict access to those services appropriately.
+
+![Image](pic10.png)
