@@ -135,7 +135,14 @@ Sliver C2 does have it's own docker image, but I used my own for simplicity. Her
 
 ![Image](pic8.png)
 
-I created a shared volume between the host and the Sliver C2 container at /var/lib/docker/volumes/sliverc2.
+I created a shared volume between the host and the Sliver C2 container at:
+
+> /var/lib/docker/volumes/sliverc2.
+
+**When generating Sliver implants add "--save /sliverc2" to your command to drop the payload in the shared volume above for you to access outside of the container: 
+
+example: 
+> generate --os mac --mtls localhost --save /sliverc2
 
 =============================================
 
