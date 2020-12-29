@@ -16,6 +16,14 @@ Docker must be installed and running. I have included a docker install script th
 
 ---------------
 
+## To Run
+
+> chmod +x run.sh
+
+> sudo ./run.sh
+
+---------------
+
 ## Available C2 servers:
 
 ![Image](pic1.png)
