@@ -61,13 +61,13 @@ The IP/hostname provided during setup will be used to configure the client (MacC
 
 I built my own docker image for Deimos C2. Here is how the installation and setup works:
 
-- Since the Deimos C2 repo recommends pulling the latest compiled binary as opposed to building from source, I follow that guidance and pull the latest compiled go binary as of the time of this repo (which is https://github.com/DeimosC2/DeimosC2/releases/download/1.1.0/DeimosC2_linux.zip)
+- Since the Deimos C2 repo recommends pulling the latest compiled binary as opposed to building from source, I follow that guidance and pull the latest compiled go binary as of the time of this repo (which is https://github.com/DeimosC2/DeimosC2/releases/download/1.1.0/DeimosC2_linux.zip). **Note: this does take a few mins, since a compiled go binary is being pulled down.**
 
 - The binary is unzipped and loaded into Docker, where the dependencies are loaded and the DeimosC2 Linux binary is executed to start the Deimos C2 server.
 
 - The Deimos C2 server will start once done and allow you to login on port 8443 and create a Deimos login account. **Note: You will want to ensure that your Deimos C2 server listening on port 8443 is not publicly exposed**
 
-
+![Image](pic4.png)
 
 I created a shared volume between the host and the Deimos C2 container located at /var/lib/docker/volumes/deimosc2. However, since Deimos includes a web gui through which to access and manage your C2, you likely won't need the shared volume since you can generate payloads, download payloads, view host artifacts, etc all through the GUI.
 
