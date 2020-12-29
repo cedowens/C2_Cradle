@@ -71,9 +71,14 @@ I built my own docker image for Deimos C2. Here is how the installation and setu
 
 ![Image](pic5.png)
 
-I created a shared volume between the host and the Deimos C2 container located at /var/lib/docker/volumes/deimosc2. However, since Deimos includes a web gui through which to access and manage your C2, you likely won't need the shared volume since you can generate payloads, download payloads, view host artifacts, etc all through the GUI.
+I created a shared volume between the host and the Deimos C2 container located at:
+> /var/lib/docker/volumes/deimosc2 
 
-### 4. **EvilOSX C2:
+However, since Deimos includes a web gui through which to access and manage your C2, you likely won't need the shared volume since you can generate payloads, download payloads, view host artifacts, etc all through the GUI.
+
+=============================================
+
+### 4. EvilOSX C2:
 
 I built my own docker image since I had issues with the included one. Here is how the installation and setup works:
 
@@ -81,15 +86,36 @@ I built my own docker image since I had issues with the included one. Here is ho
 
 - the docker image is built and executed, which will install the dependencies in docker and start the server in cli mode on port 80
 
-- You can then clone EvilOSX on your host machine (or another host) and generate the EvilOSX payload to connect to the server by running python start.py --builder and entering your C2 IP and port information
+![Image](pic6.png)
 
-I created a shared volume between the host and the Deimos C2 container located at /var/lib/docker/volumes/evilosx. Since EvilOSX contains a GUI you likely will not need the shared volume.
+- You can then clone EvilOSX on your host machine (or another host) and generate the EvilOSX payload to connect to the server by running:
+
+> python start.py --builder 
+
+and entering your C2 IP and port information
+
+I created a shared volume between the host and the Deimos C2 container located at (for accessing files within the EvilOSX container):
+
+> /var/lib/docker/volumes/evilosx 
+
+=============================================
 
 ### 5. MacShellSwift C2:
 
 Since I already included a docker image for MacShellSwift, I simply run that image. No additional changes were made.
 
-I created a shared volume between the host and the MacShellSwift C2 container located at /var/lib/docker/volumes/MacShellSwift. Here you can access C2 artifacts (ex: screenshots, files downloaded, etc.).
+The MacShellSwift C2 server by default will listen on 0.0.0.0 on the port entered during the setup:
+
+![Image](pic7.png)
+
+I created a shared volume between the host and the MacShellSwift C2 container located at:
+> /var/lib/docker/volumes/MacShellSwift 
+
+Here you can access C2 artifacts (ex: screenshots, files downloaded, etc.).
+
+After the MacShellSwift C2 server is set up, you can then clone the MacShellSwift repo on a macOS host with Xcode installed, modify the client payload IP address to connect to the MacShellSwift C2 server you set up, build it, and copy it over to the target host.
+
+=============================================
 
 ### 6. Sliver C2:
 
