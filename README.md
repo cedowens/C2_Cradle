@@ -185,6 +185,8 @@ iii. Docker maps the chaosc2 directory (where the server is running) to the foll
 
 ### 8. Empire C2:
 
+**link: https://github.com/BC-SECURITY**
+
 Since Empire contains its own docker image, I simply pull that image and run it. No additional changes were made.
 
 Once started the server also opens port 5000 (default admin API) as well as 1337 (default REST API), so you will need to restrict access to those services appropriately.
