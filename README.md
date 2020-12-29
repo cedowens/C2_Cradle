@@ -80,6 +80,8 @@ However, since Deimos includes a web gui through which to access and manage your
 
 ### 4. EvilOSX C2:
 
+**link: https://github.com/Marten4n6/EvilOSX**
+
 I built my own docker image since I had issues with the included one. Here is how the installation and setup works:
 
 - the EvilOSX repo is cloned and my docker image is copied into the repo
@@ -102,6 +104,8 @@ I created a shared volume between the host and the Deimos C2 container located a
 
 ### 5. MacShellSwift C2:
 
+**link: https://github.com/cedowens/MacShellSwift**
+
 Since I already included a docker image for MacShellSwift, I simply run that image. No additional changes were made.
 
 The MacShellSwift C2 server by default will listen on 0.0.0.0 on the port entered during the setup:
@@ -119,15 +123,21 @@ After the MacShellSwift C2 server is set up, you can then clone the MacShellSwif
 
 ### 6. Sliver C2:
 
+**link: https://github.com/BishopFox/sliver**
+
 Sliver C2 does have it's own docker image, but I used my own for simplicity. Here is how the installation and setup works:
 
 - the Sliver C2 compiled go binary is downloaded (the latest version during the time of this repo was v1.2.0 and I used the sliver-server_linux.zip file)
 
 - the binary is unzipped and added to the docker image where it is executed
 
-- you will then be brought to the Sliver main menu to select options
+- you will then be brought to the Sliver main menu to select options (start your listener, generate payloads, etc.):
+
+![Image](pic8.png)
 
 I created a shared volume between the host and the Sliver C2 container at /var/lib/docker/volumes/sliverc2.
+
+=============================================
 
 ### 7. CHAOS C2:
 
