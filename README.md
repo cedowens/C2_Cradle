@@ -69,6 +69,8 @@ I built my own docker image for Deimos C2. Here is how the installation and setu
 
 ![Image](pic4.png)
 
+![Image](pic5.png)
+
 I created a shared volume between the host and the Deimos C2 container located at /var/lib/docker/volumes/deimosc2. However, since Deimos includes a web gui through which to access and manage your C2, you likely won't need the shared volume since you can generate payloads, download payloads, view host artifacts, etc all through the GUI.
 
 ### 4. **EvilOSX C2:
