@@ -1,5 +1,5 @@
 # C2 Cradle
-The C2 Cradle is a tool to download, install, and start command &amp; control servers (that have macOS compatible C2 clients) as docker containers. The operator is presented with a list of options to choose from and the C2 Cradle will take it from there and download, install, and start the C2 server in a container. 
+The C2 Cradle is a tool to easily download, install, and start command &amp; control servers (I added C2s that have macOS compatible C2 payloads/clients) as docker containers. The operator is presented with a list of options to choose from and the C2 Cradle will take it from there and download, install, and start the C2 server in a container. 
 
 **Why?**
 1. This can be useful to blue teamers who want to quickly stand up commonly used cross platform C2 frameworks for building detections. This will allow blue teamers to easily accomplish this without having to worry about manually installing dependencies.
